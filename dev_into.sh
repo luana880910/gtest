@@ -1,0 +1,1 @@
+docker run -v $PWD:/src --rm -it farn /bin/bash
