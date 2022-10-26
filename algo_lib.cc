@@ -42,7 +42,9 @@ string Walktober(string str)
     }
     // cout << "Case #" << i << ": " << totalnum << "\n ";
 
-    output += "Case #" + to_string(i) + ": " + to_string(totalnum) + "\n";
+    output += "Case #" + to_string(i) + ": " + to_string(totalnum);
+    if (i != T)
+      output += "\n";
   }
   return output;
 }
