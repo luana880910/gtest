@@ -2,47 +2,78 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
+#include <algorithm>
+#include <math.h>
+
 using namespace std;
-string Walktober(string str)
+
+string Curling(string str)
 {
+
   istringstream is(str);
   int T;
   is >> T;
   string output = "";
   for (int i = 1; i < T + 1; i++)
   {
-    int M, N, P;
-    is >> M;
+    int Rs, Rh, N, M;
+    vector<pair<float, int>> pairs;
+    is >> Rs;
+    is >> Rh;
     is >> N;
-    is >> P;
-    int table[M + 1][N];
-    int totalnum = 0;
-    for (int j = 1; j < M + 1; j++)
-    {
-      for (int k = 0; k < N; k++)
-      {
-        is >> table[j][k];
-      }
-    }
     for (int j = 0; j < N; j++)
     {
-      int maxnum = 0;
-      for (int k = 1; k < M + 1; k++)
+      int x, y;
+      is >> x;
+      is >> y;
+      if (sqrt(x * x + y * y) <= Rh + Rs)
       {
-
-        if (table[k][j] > maxnum)
-        {
-          maxnum = table[k][j];
-        }
-      }
-      if (table[P][j] < maxnum)
-      {
-        totalnum += maxnum - table[P][j];
+        pairs.push_back(make_pair(sqrt(x * x + y * y), 0));
       }
     }
-    // cout << "Case #" << i << ": " << totalnum << "\n ";
-
-    output += "Case #" + to_string(i) + ": " + to_string(totalnum) + "\n";
+    is >> M;
+    for (int j = 0; j < M; j++)
+    {
+      int x, y;
+      is >> x;
+      is >> y;
+      if (sqrt(x * x + y * y) <= Rh + Rs)
+      {
+        pairs.push_back(make_pair(sqrt(x * x + y * y), 1));
+      }
+    }
+    int red = 0;
+    int yellow = 0;
+    if (pairs.size() != 0)
+    {
+      sort(pairs.begin(), pairs.end());
+      if (pairs[0].second == 0)
+      {
+        red = 1;
+        for (int j = 1; j < pairs.size(); j++)
+        {
+          if (pairs[j].second == 1)
+          {
+            break;
+          }
+          red++;
+        }
+      }
+      else
+      {
+        yellow = 1;
+        for (int j = 1; j < pairs.size(); j++)
+        {
+          if (pairs[j].second == 0)
+          {
+            break;
+          }
+          yellow++;
+        }
+      }
+    }
+    output += "Case #" + to_string(i) + ": " + to_string(red) + " " + to_string(yellow) + "\n";
   }
   return output;
 }
