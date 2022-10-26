@@ -21,3 +21,6 @@ hello_test
 
 # vscode
 .vscode
+
+# Mac garbage
+.DS_Store
