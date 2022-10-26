@@ -1,0 +1,1 @@
+cd build/CMakeFiles/gtest_entry.dir && lcov -c -o test.info -d . && genhtml test.info -o result
