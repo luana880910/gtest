@@ -18,7 +18,7 @@ string Curling(string str)
   for (int i = 1; i < T + 1; i++)
   {
     int Rs, Rh, N, M;
-    vector<pair<float, int>> pairs;
+    vector<pair<double, int>> pairs;
     is >> Rs;
     is >> Rh;
     is >> N;
