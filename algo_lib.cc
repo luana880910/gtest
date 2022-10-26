@@ -1,10 +1,8 @@
-#include <gtest/gtest.h>
 #include <sstream>
 #include <iostream>
 #include <fstream>
 #include <string>
 using namespace std;
-string strarr[4];
 string Walktober(string str)
 {
   istringstream is(str);
@@ -44,18 +42,7 @@ string Walktober(string str)
     }
     // cout << "Case #" << i << ": " << totalnum << "\n ";
 
-    output += "Case #" + to_string(i) + ": " + to_string(totalnum) + "\n ";
+    output += "Case #" + to_string(i) + ": " + to_string(totalnum) + "\n";
   }
   return output;
-}
-
-int main(int argc, char **argv)
-{
-  //testing::InitGoogleTest(&argc, argv);
-  #ifdef __linux__
-  puts("test is running on linux");
-  #elif defined(__APPLE__) || defined(__unix__)
-  puts("test is probably running on mac");
-  #endif
-  return RUN_ALL_TESTS();
 }

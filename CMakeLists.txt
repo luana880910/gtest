@@ -14,15 +14,17 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-
+set(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage -pthread -fsanitize=address")
+set(CMAKE_C_FLAGS "-g -O0 -Wall -W -fprofile-arcs -ftest-coverage -fsanitize=address")
 add_executable(
-  hello_test
-  hello_test.cc
+  gtest_entry
+  gtest_entry.cc
+  algo_lib.cc
 )
 target_link_libraries(
-  hello_test
+  gtest_entry
   GTest::gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(hello_test)
+gtest_discover_tests(gtest_entry)
